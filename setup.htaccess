@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Убираем двойные слэши в URL
+RewriteCond %{REQUEST_URI} ^//+(.*)$
+RewriteRule .* /%1 [R=301,L]
+
+# Перенаправляем все запросы на index.php (если используется ЧПУ)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /learn.php [L]
